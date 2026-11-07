@@ -1,3 +1,12 @@
 #!/usr/bin/env ruby
-require 'cry_bug'
-Pry.start
+# frozen_string_literal: true
+
+# Do not duplicate code, use cry
+cry_bin_path = File.expand_path('cry', __dir__)
+
+if File.exist?(cry_bin_path)
+  load cry_bin_path
+else
+  warn "Error: Could not locate 'cry' executable at #{cry_bin_path}"
+  exit 1
+end
