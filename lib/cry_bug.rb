@@ -17,11 +17,12 @@ rescue StandardError
 end
 
 # ByeBug shortcuts
+if defined?(PryByebug)
 Pry.commands.alias_command 'c', 'continue'
 Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
 Pry.commands.alias_command 'f', 'finish'
-# end
+end
 
 if ENV.select { |k, _v| /(RAILS|RACK|RUBY|APP)_ENV/ === k }&.values&.first === 'test'
   # Add Minitest 6 compatibility stups to make pry-rescue work properly
@@ -67,3 +68,5 @@ module Kernel
     binding.of_caller(1).pry
   end
 end
+
+Pry.commands.alias_command 'reload!', 'reload-code'
