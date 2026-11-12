@@ -18,13 +18,15 @@ end
 
 # ByeBug shortcuts
 if defined?(PryByebug)
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'f', 'finish'
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
 end
 
-if ENV.select { |k, _v| /(RAILS|RACK|RUBY|APP)_ENV/ === k }&.values&.first === 'test'
+ENV.select { |k, _v| /(RAILS|RACK|RUBY|APP)_ENV/ === k }&.values&.first
+
+if defined?(Minitest::Test) 
   # Add Minitest 6 compatibility stups to make pry-rescue work properly
   module MiniTest
     Unit = Minitest
