@@ -24,9 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'pry-rescue', '~> 1.5'
   spec.add_dependency 'pry-stack_explorer', '~> 0.5'
 
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\u0000").reject { |f| f.match(%r{A(?:test|spec|features)/}) }
-  end
-  # Fallback if not inside a git repo
-  # spec.files = Dir['lib/**/*.rb', 'exe/*', 'README.md', 'cry_bug.gemspec'] if spec.files.empty?
+  # spec.files = Dir.chdir(__dir__) do
+  #   `git ls-files -z`.split("\u0000").reject { |f| f.match(%r{A(?:test|spec|features)/}) }
+  # end
+  spec.files = Dir['lib/**/*.rb', 'exe/*', 'README.md', 'cry_bug.gemspec'] if spec.files.empty?
 end
